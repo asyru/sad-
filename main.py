@@ -27,9 +27,11 @@ def update_page(page):
 def main(page: ft.Page):
     page.title = "تطبيق الوقت"
     page.current_screen = "menu"
+    # إضافة خلفية صلبة للصفحة لمنع ظهور أي مساحات فارغة
+    page.bgcolor = "#FFFFFF"  # خلفية بيضاء للصفحة
     # تغيير الأيقونة
     page.window.icon = "icon.png"
-    # تدرج لوني للخلفية
+    # تدرج لوني للخلفية (اختياري، يمكن تعطيله إذا لم يكن ضروريًا)
     page.window.bgcolor = ft.LinearGradient(
         begin=ft.alignment.top_left,
         end=ft.alignment.bottom_right,
@@ -158,7 +160,7 @@ def main_menu(page: ft.Page):
         ),
         padding=15,
         border_radius=15,
-        bgcolor=ft.colors.with_opacity(0.98, "#FFFFFF"),
+        bgcolor=ft.colors.with_opacity(1.0, "#FFFFFF"),  # خلفية بيضاء صلبة
         shadow=ft.BoxShadow(
             spread_radius=2,
             blur_radius=20,
@@ -167,6 +169,8 @@ def main_menu(page: ft.Page):
         ),
         alignment=ft.alignment.center,
         expand=True,
+        width=page.width,  # التأكد من تغطية العرض بالكامل
+        height=page.height,  # التأكد من تغطية الارتفاع بالكامل
     )
 
 # صفحة تحويل الوقت
@@ -308,7 +312,7 @@ def time_converter(page: ft.Page):
         ),
         padding=15,
         border_radius=15,
-        bgcolor=ft.colors.with_opacity(0.98, "#FFFFFF"),
+        bgcolor=ft.colors.with_opacity(1.0, "#FFFFFF"),
         shadow=ft.BoxShadow(
             spread_radius=2,
             blur_radius=20,
@@ -317,6 +321,8 @@ def time_converter(page: ft.Page):
         ),
         alignment=ft.alignment.center,
         expand=True,
+        width=page.width,
+        height=page.height,
     )
 
 # صفحة إضافة الوقت
@@ -535,7 +541,7 @@ def add_time(page: ft.Page):
         ),
         padding=15,
         border_radius=15,
-        bgcolor=ft.colors.with_opacity(0.98, "#FFFFFF"),
+        bgcolor=ft.colors.with_opacity(1.0, "#FFFFFF"),
         shadow=ft.BoxShadow(
             spread_radius=2,
             blur_radius=20,
@@ -544,6 +550,8 @@ def add_time(page: ft.Page):
         ),
         alignment=ft.alignment.center,
         expand=True,
+        width=page.width,
+        height=page.height,
     )
 
 # صفحة جدول الأوقات
@@ -934,7 +942,7 @@ def time_table(page: ft.Page):
         ),
         padding=15,
         border_radius=15,
-        bgcolor=ft.colors.with_opacity(0.98, "#FFFFFF"),
+        bgcolor=ft.colors.with_opacity(1.0, "#FFFFFF"),
         shadow=ft.BoxShadow(
             spread_radius=2,
             blur_radius=20,
@@ -943,6 +951,8 @@ def time_table(page: ft.Page):
         ),
         alignment=ft.alignment.center,
         expand=True,
+        width=page.width,
+        height=page.height,
     )
 
 if __name__ == "__main__":
