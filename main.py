@@ -30,7 +30,11 @@ def main(page: ft.Page):
     # تغيير الأيقونة
     page.window.icon = "icon.png"
     # تدرج لوني للخلفية
-    page.bgcolor = ft.colors.TRANSPARENT
+    page.bgcolor = ft.LinearGradient(
+    begin=ft.alignment.top_left,
+    end=ft.alignment.bottom_right,
+    colors=["#0D47A1", "#1976D2", "#42A5F5"]
+)
     page.window.bgcolor = ft.LinearGradient(
         begin=ft.alignment.top_left,
         end=ft.alignment.bottom_right,
