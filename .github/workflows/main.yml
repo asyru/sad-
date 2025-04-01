@@ -1,4 +1,4 @@
-name: All Builds (Linux, Windows, Android)
+name: All Builds (Windows, Android)
 
 on:
   push:
@@ -13,47 +13,6 @@ env:
   FLUTTER_VERSION: 3.22.2
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Setup Python ${{ env.PYTHON_VERSION }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Install Python Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Setup Flutter ${{ env.FLUTTER_VERSION }}
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: ${{ env.FLUTTER_VERSION }}
-
-    - name: Patch for linux build
-      run: |
-        flutter doctor
-        sudo apt-get update -y
-        sudo apt-get install -y ninja-build libgtk-3-dev
-        flutter doctor
-
-    - name: Flet Build Linux
-      run: |
-        flutter config --no-analytics
-        flet build linux.Concurrent --verbose --build-number=$BUILD_NUMBER --build-version=$BUILD_VERSION
-
-    - name: Upload Linux Artifact
-      uses: actions/upload-artifact@v4.3.4
-      with:
-        name: linux-build-artifact
-        path: build/linux
-        if-no-files-found: warn
-        overwrite: false
-
   build-windows:
     runs-on: windows-latest
     env:
@@ -117,10 +76,19 @@ jobs:
         distribution: 'temurin'
         java-version: '21'
 
-    - name: Flet Build APK
+    - name: Flet Build APK with Background Fix
       run: |
         flutter config --no-analytics
-        flet build apk --verbose --build-number=$BUILD_NUMBER --build-version=$BUILD_VERSION
+        # بناء التطبيق مؤقتًا لإنشاء ملفات Flutter
+        flet build apk --verbose --build-number=$BUILD_NUMBER --build-version=$BUILD_VERSION --no-apk
+        # تعديل ملف main.dart لضمان أن الخلفية بيضاء
+        sed -i "s|backgroundColor: Colors.white,|backgroundColor: Colors.white, // Ensure white background\n      scaffoldBackgroundColor: Colors.white,|" build/flutter/lib/main.dart
+        # إعادة بناء APK بعد التعديل
+        cd build/flutter
+        flutter build apk --release --build-number=$BUILD_NUMBER --build-version=$BUILD_VERSION
+        cd ../..
+        # نقل ملف APK إلى المجلد المناسب
+        mv build/flutter/build/app/outputs/flutter-apk/app-release.apk build/apk/app-release.apk
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4.3.4
