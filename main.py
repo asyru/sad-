@@ -109,7 +109,7 @@ def main_menu(page: ft.Page):
                 ft.ElevatedButton(
                     "تحويل بين 12 و24 ساعة",
                     on_click=go_to_converter,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     width=button_width,
                     height=button_height,
                     bgcolor="#1976D2",
@@ -124,7 +124,7 @@ def main_menu(page: ft.Page):
                 ft.ElevatedButton(
                     "إضافة وقت إلى ساعة محددة",
                     on_click=go_to_add_time,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     width=button_width,
                     height=button_height,
                     bgcolor="#F57C00",
@@ -139,7 +139,7 @@ def main_menu(page: ft.Page):
                 ft.ElevatedButton(
                     "خروج",
                     on_click=exit_app,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     width=button_width,
                     height=button_height,
                     bgcolor="#D32F2F",
@@ -273,7 +273,7 @@ def time_converter(page: ft.Page):
                 ft.ElevatedButton(
                     "تحويل",
                     on_click=convert_time,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     bgcolor="#1976D2",
                     color="#FFFFFF",
                     width=button_width,
@@ -289,7 +289,7 @@ def time_converter(page: ft.Page):
                 ft.ElevatedButton(
                     "الرئيسية",
                     on_click=go_to_menu,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     bgcolor="#616161",
                     color="#FFFFFF",
                     width=button_width,
@@ -485,7 +485,7 @@ def add_time(page: ft.Page):
                 ft.ElevatedButton(
                     "إضافة وقت",
                     on_click=add_time_entry,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     bgcolor="#5D4037",
                     color="#FFFFFF",
                     width=button_width,
@@ -500,7 +500,7 @@ def add_time(page: ft.Page):
                 ft.ElevatedButton(
                     "عرض جدول الأوقات",
                     on_click=go_to_time_table,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     bgcolor="#1976D2",
                     color="#FFFFFF",
                     width=button_width,
@@ -515,7 +515,7 @@ def add_time(page: ft.Page):
                 ft.ElevatedButton(
                     "الرئيسية",
                     on_click=go_to_menu,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     bgcolor="#616161",
                     color="#FFFFFF",
                     width=button_width,
@@ -595,7 +595,7 @@ def time_table(page: ft.Page):
                     color="#FFFFFF",
                     data=i,
                     on_click=lambda e: delete_entry(e.control.data),
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     style=ft.ButtonStyle(
                         shape=ft.RoundedRectangleBorder(radius=5),
                         elevation=3,
@@ -608,7 +608,7 @@ def time_table(page: ft.Page):
                     color="#FFFFFF",
                     data=i,
                     on_click=lambda e: edit_entry(e.control.data),
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     style=ft.ButtonStyle(
                         shape=ft.RoundedRectangleBorder(radius=5),
                         elevation=3,
@@ -706,7 +706,7 @@ def time_table(page: ft.Page):
                 actions=[ft.ElevatedButton(
                     "حفظ",
                     on_click=save_changes,
-                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                    on_hover=page.play_hover_sound,
                     bgcolor="#1976D2",
                     color="#FFFFFF"
                 )],
@@ -783,7 +783,7 @@ def time_table(page: ft.Page):
         page.window.close()
 
     undo_button.on_click = undo_action
-    undo_button.on_hover = page.play_hover_sound  # صوت عند المرور
+    undo_button.on_hover = page.play_hover_sound
     table = ft.DataTable(
         columns=[
             ft.DataColumn(ft.Text("الرقم", color="#FFFFFF")),
@@ -827,7 +827,7 @@ def time_table(page: ft.Page):
                                 ft.ElevatedButton(
                                     "العودة للإدخال",
                                     on_click=go_to_add_time,
-                                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                                    on_hover=page.play_hover_sound,
                                     bgcolor="#1976D2",
                                     color="#FFFFFF",
                                     width=button_width,
@@ -842,7 +842,7 @@ def time_table(page: ft.Page):
                                 ft.ElevatedButton(
                                     "الرئيسية",
                                     on_click=go_to_menu,
-                                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                                    on_hover=page.play_hover_sound,
                                     bgcolor="#616161",
                                     color="#FFFFFF",
                                     width=button_width,
@@ -857,7 +857,7 @@ def time_table(page: ft.Page):
                                 ft.ElevatedButton(
                                     "مسح الجدول",
                                     on_click=clear_table,
-                                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                                    on_hover=page.play_hover_sound,
                                     bgcolor="#D32F2F",
                                     color="#FFFFFF",
                                     width=button_width,
@@ -873,7 +873,7 @@ def time_table(page: ft.Page):
                             ],
                             alignment=ft.MainAxisAlignment.CENTER,
                             spacing=10,
-                            width=button_width + 20,
+                            width=button_width,
                         ),
                         ft.Column(
                             [
@@ -882,13 +882,14 @@ def time_table(page: ft.Page):
                             ],
                             alignment=ft.MainAxisAlignment.CENTER,
                             scroll=ft.ScrollMode.AUTO,
+                            expand=True,
                         ),
                         ft.Column(
                             [
                                 ft.ElevatedButton(
                                     "حفظ إلى ملف",
                                     on_click=save_to_file,
-                                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                                    on_hover=page.play_hover_sound,
                                     bgcolor="#1976D2",
                                     color="#FFFFFF",
                                     width=button_width,
@@ -903,7 +904,7 @@ def time_table(page: ft.Page):
                                 ft.ElevatedButton(
                                     "خروج",
                                     on_click=exit_app,
-                                    on_hover=page.play_hover_sound,  # صوت عند المرور
+                                    on_hover=page.play_hover_sound,
                                     bgcolor="#D32F2F",
                                     color="#FFFFFF",
                                     width=button_width,
@@ -919,13 +920,12 @@ def time_table(page: ft.Page):
                             ],
                             alignment=ft.MainAxisAlignment.CENTER,
                             spacing=10,
-                            width=button_width + 20,
+                            width=button_width,
                         ),
                     ],
                     alignment=ft.MainAxisAlignment.CENTER,
                     spacing=10,
                     scroll=ft.ScrollMode.AUTO,
-                    expand=True,
                 )
             ],
             alignment=ft.MainAxisAlignment.CENTER,
